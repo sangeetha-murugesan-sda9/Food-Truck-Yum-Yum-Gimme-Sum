@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.bg-yellow-500 {
+  background-color: #FFC107;
+}
+
+.hover\:bg-yellow-600:hover {
+  background-color: #FFB300;
+}
+
+.text-yellow-600 {
+  color: #FFB300;
+}
+
+.hover\:text-yellow-700:hover {
+  color: #FFA000;
+}

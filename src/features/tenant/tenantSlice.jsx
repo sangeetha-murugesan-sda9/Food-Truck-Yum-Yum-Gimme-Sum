@@ -1,72 +1,90 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-// 1. Fetch general API key from /keys endpoint
-export const fetchApiKey = createAsyncThunk('tenant/fetchApiKey', async () => {
-  const resp = await fetch('https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com/keys', {
-    method: 'POST',
-  });
-  if (!resp.ok) {
-    throw new Error(`API error ${resp.status}`);
-  }
-  const data = await resp.json();
-  return data.apiKey;
-});
-
-// 2. Create tenant with name, passing the API key in header
-export const createTenant = createAsyncThunk(
-  'tenant/createTenant',
-  async (name, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const apiKey = state.tenant.apiKey;  // general API key from /keys
-
-    const resp = await fetch('https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com/tenants', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-zocom': apiKey, // API key header
-      },
-      body: JSON.stringify({ name }),
-    });
-
-    if (!resp.ok) {
-      const errorText = await resp.text();
-      throw new Error(`API error ${resp.status}: ${errorText}`);
+export const fetchApiKey = createAsyncThunk(
+  'tenant/fetchApiKey',
+  async () => {
+    try {
+      const response = await fetch("https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com/keys", {
+        method: "POST"
+      });
+      if (!response.ok) throw new Error('Failed to fetch API key');
+      
+      const data = await response.json();
+      console.log("API Key received:", data.key);
+      return data.key; 
+    } catch (error) {
+      console.error("API Key error:", error);
+      throw error;
     }
+  }
+);
 
-    const data = await resp.json();
-    return data.apiKey;  // tenant-specific API key
+export const registerTenant = createAsyncThunk(
+  'tenant/registerTenant',
+  async (tenantName, { getState, rejectWithValue }) => {
+    try {
+      const { apiKey } = getState().tenant;
+      if (!apiKey) throw new Error('No API key available');
+      
+      console.log("Registering tenant with API key:", apiKey);
+      const response = await fetch("https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com/tenants", {
+        method: "POST",
+        headers: { 
+          "x-zocom": apiKey,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: tenantName }),
+      });
+      
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to register tenant');
+      }
+      
+      const data = await response.json();
+      console.log("Tenant registered:", data);
+      return data;
+    } catch (error) {
+      console.error("Tenant registration error:", error);
+      return rejectWithValue(error.message);
+    }
   }
 );
 
 const tenantSlice = createSlice({
   name: 'tenant',
-  initialState: { apiKey: '', tenantApiKey: '', status: 'idle', error: null },
+  initialState: {
+    apiKey: null,
+    tenantId: null,
+    name: '',
+    status: 'idle',
+    error: null,
+  },
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchApiKey.pending, (state) => {
         state.status = 'loading';
-        state.error = null;
       })
       .addCase(fetchApiKey.fulfilled, (state, action) => {
-        state.apiKey = action.payload;
         state.status = 'succeeded';
+        state.apiKey = action.payload;
       })
       .addCase(fetchApiKey.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       })
-      .addCase(createTenant.pending, (state) => {
+      .addCase(registerTenant.pending, (state) => {
         state.status = 'loading';
-        state.error = null;
       })
-      .addCase(createTenant.fulfilled, (state, action) => {
-        state.tenantApiKey = action.payload;
+      .addCase(registerTenant.fulfilled, (state, action) => {
         state.status = 'succeeded';
+        state.tenantId = action.payload.id;
+        state.name = action.payload.name;
       })
-      .addCase(createTenant.rejected, (state, action) => {
+      .addCase(registerTenant.rejected, (state, action) => {
         state.status = 'failed';
-        state.error = action.error.message;
+        state.error = action.payload;
       });
   },
 });

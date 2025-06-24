@@ -6,8 +6,8 @@ import tenantReducer from '../features/tenant/tenantSlice';
 
 export const store = configureStore({
   reducer: {
-    menu: menuReducer,
     cart: cartReducer,
+    menu: menuReducer,
     order: orderReducer,
     tenant: tenantReducer,
   },
