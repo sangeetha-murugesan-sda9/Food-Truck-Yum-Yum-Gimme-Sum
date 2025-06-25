@@ -77,7 +77,7 @@ const CartPage = () => {
         </div>
         <button
           onClick={handlePlaceOrder}
-          disabled={status === 'laddar'}
+          disabled={status === 'Ladder'}
           className="w-full mt-6 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-6 px-6 rounded disabled:opacity-50"
         >
           {status === 'laddar' ? 'Lägger beställning...' : 'Lägg beställning'}

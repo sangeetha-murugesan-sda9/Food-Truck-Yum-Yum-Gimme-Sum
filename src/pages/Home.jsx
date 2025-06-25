@@ -67,7 +67,7 @@ function Home() {
             Menu Error: {error}
           </div>
         ) : (
-          // Single grey box container with centered content
+   
         <div className="menu-item-card rounded-xl px-1 py-1 max-w-xl w-full mx-auto">
 
   <div className="flex flex-col items-center">

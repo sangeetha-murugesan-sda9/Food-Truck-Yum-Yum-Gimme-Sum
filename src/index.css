@@ -4,7 +4,7 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #95d5b2; /* Primary green */
+  background-color: #95d5b2; 
   color: white;
 }
 
@@ -19,12 +19,11 @@ body {
   }  
 }
 
-/* Custom styles for menu items */
 .menu-item-card {
-  background: #7D7C7C; /* Solid grey background */
+  background: #7D7C7C; 
   border-radius: 3px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  color: white; /* Ensure all text is white */
+  color: white; 
   margin-left: 4%;
   margin-right: 4%;
 
@@ -62,10 +61,10 @@ margin-bottom:10% ;
 .cart-text{
   color: black;
   text-align: center;
-   font-weight: 500; /* Extra bold */
-  letter-spacing: 0.5px; /* Slightly increased spacing */
-  text-transform: uppercase; /* Ensure uppercase */
-  font-size: 2rem; /* Slightly larger than default text-2xl */
+   font-weight: 500; 
+  letter-spacing: 0.5px; 
+  text-transform: uppercase; 
+  font-size: 2rem; 
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   
 }
@@ -77,12 +76,11 @@ margin-bottom:10% ;
   margin-left: 50%;
  }
 
-
 .menu-item-name {
   margin-left: 3%;
   margin-right: 3%;
   letter-spacing: 1px;
-  color: white; /* Force white text */
+  color: white; 
 }
 
 .ingredients-text {
@@ -91,20 +89,20 @@ margin-bottom:10% ;
   font-size: 0.8rem;
   line-height: 1.2;
   letter-spacing: -0.2px;
-  color: #e2e8f0; /* Lighter grey for ingredients */
+  color: #e2e8f0; 
 }
 
 .menu-item-price
 {
   margin-left: 3%; 
 }
-/* Force all text in menu items to be white */
+
 .menu-item-card * {
   color: white;
   text-align: center;
 }
 .border-dotted {
-  border-style: dotted !important;/* Force dotted style */
+  border-style: dotted !important;
 }
 
 .flex.items-center .border-dotted {
@@ -112,43 +110,50 @@ margin-bottom:10% ;
 }
 
 .menu-item-name {
-  font-weight: 500; /* Extra bold */
-  letter-spacing: 0.5px; /* Slightly increased spacing */
-  text-transform: uppercase; /* Ensure uppercase */
-  font-size: 1.6rem; /* Slightly larger than default text-2xl */
+  font-weight: 500; 
+  letter-spacing: 0.5px; 
+  text-transform: uppercase; 
+  font-size: 1.6rem; 
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-/* Menu item price styling */
 .menu-item-price {
-  font-weight: 500; /* Bold */
-  font-size: 1.6rem; /* Match the name size */
-  color:white !important; /* Yellow color */
+  font-weight: 500; 
+  font-size: 1.6rem; 
+  color:white !important; 
 }
 
-/* Ingredients text styling */
+.order-details{
+  background-color:#7D7C7C; ;
+  text-align: center;
+  font-size: 2.5vh;
+}
+
 .ingredients-text {
   font-style: italic;
   letter-spacing: -0.1px;
   line-height: 1.4;
-  color: #e2e8f0; /* Light gray */
-  font-size: 1rem; /* Slightly smaller */
+  color: #e2e8f0; 
+  font-size: 1rem; 
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-/* Dotted line separator */
+
 .border-dotted {
   border-top-style: dotted !important;
   border-top-width: 2px !important;
 }
 
-/* Button styling */
+
 button {
   font-weight: 700;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   background-color:#8b8c89;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  height: 4vh;
+  width: 10vh;
+  font-size: 1.3vh;
 }
 
 

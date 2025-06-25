@@ -12,7 +12,8 @@ const Navbar = () => {
         <h1 yum>
           Yum Yum Gimme Sum 
           <Link to="/" className=" MenuText text-white hover:text-gray-200">
-            Meny
+          <button>Meny</button>
+            
           </Link>
         </h1>
         <div className="flex space-x-4">
