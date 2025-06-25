@@ -3,91 +3,93 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchMenu } from '../features/menu/menuSlice';
 import MenuItem from '../features/menu/Menu';
 import { fetchApiKey, registerTenant } from '../features/tenant/tenantSlice';
+import logo from '../assets/logo.png'; 
 
 function Home() {
+  const dispatch = useDispatch();
+  const { items = [], status, error } = useSelector(state => state.menu);
+  const { apiKey, tenantId, status: tenantStatus } = useSelector(state => state.tenant);
 
-const dispatch = useDispatch();
+  useEffect(() => {
+    if (!apiKey && tenantStatus !== 'loading') {
+      dispatch(fetchApiKey());
+    }
+  }, [apiKey, tenantStatus, dispatch]);
 
-const { items = [], status, error } = useSelector(state => state.menu);
+  useEffect(() => {
+    if (apiKey && !tenantId && tenantStatus !== 'loading') {
+      dispatch(registerTenant(`MyFoodTruck-${Math.random().toString(36).substring(2, 8)}`));
+    }
+  }, [apiKey, tenantId, tenantStatus, dispatch]);
 
-const { apiKey, tenantId, status: tenantStatus } = useSelector(state => state.tenant);
+  useEffect(() => {
+    if (apiKey && tenantId && status === 'idle') {
+      dispatch(fetchMenu());
+    }
+  }, [apiKey, tenantId, status, dispatch]);
 
-useEffect(() => {
+  
+   return (
+    <div className="min-h-screen bg-leaves-pattern">
+      
+      {/* Header */}
+      <header className="Logo fixed top-0 left-0 right-0 z-10 bg-gradient-to-b from-green-900 to-green-800 p-4 flex justify-between items-center shadow-lg">
+        {/* Logo container */}
+       <img 
+        src={logo} 
+        alt="Yum Yum Gimme Sum Logo" 
+        className="w-16 h-16 object-contain rounded-lg border-4 border-white shadow-inner"
+        />
+        
+      </header>
 
-if (!apiKey && tenantStatus !== 'loading') {
+      {/* Main content */}
+      <main className="container mx-auto px-4 pt-24 pb-6 justigy-center">
+        {/* Page title */}
+        <div className="text-center mb-8 title">
+          <h1 className="text-5xl font-bold text-white font-outline tracking-tight">MENY</h1>
+        </div>
+        
+        {/* Loading and error states */}
+        {tenantStatus === 'loading' || status === 'loading' ? (
+          <div className="text-center py-12 text-white bg-gray-800 bg-opacity-70 rounded-xl p-8 max-w-md mx-auto">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+            Loading menu...
+          </div>
+        ) : tenantStatus === 'failed' ? (
+          <div className="text-center py-12 text-red-300 bg-gray-800 bg-opacity-80 rounded-xl p-6 max-w-md mx-auto">
+            <span className="text-xl block mb-2"></span>
+            Tenant Error: {error}
+          </div>
+        ) : status === 'failed' ? (
+          <div className="text-center py-12 text-red-300 bg-gray-800 bg-opacity-80 rounded-xl p-6 max-w-md mx-auto">
+            <span className="text-xl block mb-2"></span>
+            Menu Error: {error}
+          </div>
+        ) : (
+          // Single grey box container with centered content
+        <div className="menu-item-card rounded-xl px-1 py-1 max-w-xl w-full mx-auto">
 
-dispatch(fetchApiKey());
-
-}
-
-}, [apiKey, tenantStatus, dispatch]);
-
-useEffect(() => {
-
-if (apiKey && !tenantId && tenantStatus !== 'loading') {
-
-dispatch(registerTenant(`MyFoodTruck-${Math.random().toString(36).substring(2, 8)}`));
-
-}
-
-}, [apiKey, tenantId, tenantStatus, dispatch]);
-
-
-
-useEffect(() => {
-
-if (apiKey && tenantId && status === 'idle') {
-
-dispatch(fetchMenu());
-
-}
-
-}, [apiKey, tenantId, status, dispatch]);
-
-if (tenantStatus === 'loading' || status === 'loading') {
-
-return <div className="text-center py-12">Loading...</div>;
-
-}
-
-if (tenantStatus === 'failed') {
-
-return <div className="text-center py-12 text-red-500">Tenant Error: {error}</div>;
-
-}
-
-if (status === 'failed') {
-
-return <div className="text-center py-12 text-red-500">Menu Error: {error}</div>;
-
-}
-
-return (
-
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-{Array.isArray(items) && items.length > 0 ? (
-
-items.map(item => (
-
-<MenuItem key={item.id} item={item} />
-
-))
-
-) : (
-
-<div className="col-span-full text-center py-12">
-
-No menu items available
-
+  <div className="flex flex-col items-center">
+    {Array.isArray(items) && items.length > 0 ? (
+      items.map(item => <MenuItem key={item.id} item={item} />)
+    ) : (
+      <div className="text-center py-12 text-white">
+        No menu items available
+      </div>
+    )}
+  </div>
 </div>
 
-)}
-
-</div>
-
-);
-
+        )}
+      </main>
+      
+      {/* Footer */}
+      <footer className="py-6 text-center text-white text-opacity-80 text-sm">
+        <p>© {new Date().getFullYear()} Yum Yum Gimme Sum</p>
+      </footer>
+    </div>
+  );
 }
 
 export default Home;
