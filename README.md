@@ -170,5 +170,4 @@ Tailwind classes sorted using Headwind
 
 bash
 npm test # Runs Vitest + React Testing Library
-# License
-MIT - Includes commercial use rights for food truck operators
+
