@@ -1,33 +1,37 @@
 
 A React-based frontend application for the Yum Yum Gimme Sum food truck that serves delicious wontons. This app allows customers to browse the menu, manage their cart, place orders, and view receipts.
 
-##Features
- Browse the full menu of wontons, dips, and drinks
+# Features
+1.Browse the full menu of wontons, dips, and drinks
 
- Add/remove items from shopping cart
- Responsive design based on Figma sketch
+ 2.Add/remove items from shopping cart
+ 
+ 3.Responsive design based on Figma sketch
 
- View switching between menu, cart, order, and receipt pages
+ 4.View switching between menu, cart, order, and receipt pages
 
- Place orders and get order confirmation with ETA
+ 5.Place orders and get order confirmation with ETA
 
- View order receipts
+ 6.View order receipts
 
- Secure API integration with API key management
+ 7.Secure API integration with API key management
 
-##Technologies Used
-React.js
+# Technologies Used
 
-Redux Toolkit (with createAsyncThunk)
+1.React.js
 
-React Router
+2.Redux Toolkit (with createAsyncThunk)
 
-CSS Modules
+3.React Router
 
-Fetch API
+4.CSS Modules
 
-Folder Structure
-text
+5.Tailwind CSS
+
+6.Fetch API
+
+# Folder Structure
+
 src/
 │
 ├── app/
@@ -53,29 +57,32 @@ src/
 ├── components/
 │   ├── Layout.jsx
 │   └── Navbar.jsx
+── styles/
+│   ├── global.css
+│   
 │
 ├── App.jsx
 ├── main.jsx
-└── index.css
-API Integration
-The app integrates with the Yum Yum Gimme Sum Foodtruck API:
+
+# API Integration
+# The app integrates with the Yum Yum Gimme Sum Foodtruck API:
 
 Base URL: https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com
 
 All requests require an API key obtained from /keys endpoint
 
-Key features:
+# Key features:
 
-Menu management
+1.Menu management
 
-Order processing
+2.Order processing
 
-Receipt generation
+3.Receipt generation
 
-Tenant registration
+4.Tenant registration
 
-Getting Started
-Prerequisites
+# Getting Started
+# Prerequisites
 Node.js (v14 or higher)
 
 npm or yarn
@@ -90,17 +97,17 @@ Install dependencies:
 
 bash
 npm install
-# or
+or
 yarn install
 Start the development server:
 
 bash
 npm start
-# or
+or
 yarn start
 Open http://localhost:3000 in your browser.
 
-Available Scripts
+# Available Scripts
 npm start: Runs the app in development mode
 
 npm test: Launches the test runner
@@ -109,15 +116,59 @@ npm run build: Builds the app for production
 
 npm run eject: Ejects from Create React App (not recommended)
 
-Redux Store Structure
+# Redux Store Structure
 The Redux store manages:
 
-Menu items
+1.Menu items
 
-Cart contents
+2.Cart contents
 
-Order details
+3.Order details
 
-Tenant information
+4.Tenant information
 
-API key
+5.API key
+
+# UI Components
+Component	Purpose	Props
+<MenuItem />	Dishes display	item, onClick
+<TenantBadge />	API status	tenantId, status
+
+# API Endpoints
+javascript
+// Example API interaction
+fetch(`${import.meta.env.VITE_API_BASE_URL}/menu`, {
+  headers: { "X-API-KEY": apiKey }
+})
+# Troubleshooting
+Issue: Menu fails to load
+# Fixes:
+
+1.Verify API key in Redux store
+
+2.Check network tab for CORS errors
+
+3.Validate tenantId exists
+
+# Deployment Targets
+Food Truck Tablet: npm run build -- --mode kiosk
+
+Web Hosting: Configure as SPA in vercel/netlify
+
+Electron: See electron-branch
+
+# Contribution Guide
+Code Standards:
+
+Redux actions MUST use createAsyncThunk
+
+Components prefixed with use must be hooks
+
+Tailwind classes sorted using Headwind
+
+# Testing:
+
+bash
+npm test # Runs Vitest + React Testing Library
+# License
+MIT - Includes commercial use rights for food truck operators
