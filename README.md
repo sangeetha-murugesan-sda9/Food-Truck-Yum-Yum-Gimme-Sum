@@ -130,9 +130,9 @@ The Redux store manages:
 5.API key
 
 # UI Components
-Component	Purpose	Props
-<MenuItem />	Dishes display	item, onClick
-<TenantBadge />	API status	tenantId, status
+# Component	              Purpose                	Props
+<MenuItem />   	      Dishes display	item,      onClick
+<TenantBadge />	      API status	tenantId,      status
 
 # API Endpoints
 javascript
