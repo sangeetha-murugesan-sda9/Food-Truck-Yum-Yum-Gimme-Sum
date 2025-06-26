@@ -40,15 +40,15 @@ const ReceiptPage = () => {
   const total = orderValue > 0 ? orderValue : calculatedTotal;
 
   if (status === 'loading') {
-    return <div className="text-center py-12">Loading receipt...</div>;
+    return <div className="text-center py-12">Läser in kvitto...</div>;
   }
 
   if (status === 'failed') {
     return (
       <div className="text-center py-12">
-        <h2 className="text-2xl font-bold mb-4 text-red-500">Error: {error}</h2>
+        <h2 className="text-2xl font-bold mb-4 text-red-500">Fel: {error}</h2>
         <Link to="/" className="text-yellow-600 hover:text-yellow-700">
-          Back to menu
+          Tillbaka till menyn
         </Link>
       </div>
     );
@@ -57,9 +57,9 @@ const ReceiptPage = () => {
   if (!receipt || !receiptData) {
     return (
       <div className="text-center py-12">
-        <h2 className="text-2xl font-bold mb-4">No receipt found</h2>
+        <h2 className="text-2xl font-bold mb-4">Inget kvitto hittades</h2>
         <Link to="/" className="text-yellow-600 hover:text-yellow-700">
-          Back to menu
+          Tillbaka till menyn
         </Link>
       </div>
     );
@@ -69,7 +69,7 @@ const ReceiptPage = () => {
     <div className=" receipt-page max-w-4xl mx-auto p-4">
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold">Yum Yum Gimme Sum</h1>
-        <p className="text-gray-600">matvagn Kvitto</p>
+        <p className="text-gray-600">kvitto för matvagn</p>
       </div>
 
       <div className="bg-white shadow-lg rounded-lg overflow-hidden">
