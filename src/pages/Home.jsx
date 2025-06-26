@@ -4,6 +4,7 @@ import { fetchMenu } from '../features/menu/menuSlice';
 import MenuItem from '../features/menu/Menu';
 import { fetchApiKey, registerTenant } from '../features/tenant/tenantSlice';
 import logo from '../assets/logo.png'; 
+import backgroundImage from '../assets/background.png';
 
 function Home() {
   const dispatch = useDispatch();
@@ -30,11 +31,18 @@ function Home() {
 
   
    return (
-    <div className="min-h-screen bg-leaves-pattern">
-      
-      {/* Header */}
+    <div 
+      className="min-h-screen"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+    
       <header className="Logo fixed top-0 left-0 right-0 z-10 bg-gradient-to-b from-green-900 to-green-800 p-4 flex justify-between items-center shadow-lg">
-        {/* Logo container */}
        <img 
         src={logo} 
         alt="Yum Yum Gimme Sum Logo" 
@@ -84,7 +92,6 @@ function Home() {
         )}
       </main>
       
-      {/* Footer */}
       <footer className="py-6 text-center text-white text-opacity-80 text-sm">
         <p>© {new Date().getFullYear()} Yum Yum Gimme Sum</p>
       </footer>

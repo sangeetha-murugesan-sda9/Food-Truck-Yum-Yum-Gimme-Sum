@@ -48,7 +48,7 @@ const CartPage = () => {
                   id: item.id, 
                   quantity: Math.max(1, item.quantity - 1) 
                 }))}
-                className="px-5 py-3 bg-gray-200 rounded-l"
+                className="minus-button px-5 py-3 bg-gray-200 rounded-l"
               >
                 -
               </button>
@@ -58,13 +58,16 @@ const CartPage = () => {
                   id: item.id, 
                   quantity: item.quantity + 1 
                 }))}
-                className="px-5 py-3 bg-gray-200 rounded-r"
+                className="plus-button px-5 py-3 bg-gray-200 rounded-r"
               >
                 +
               </button>
+
+             
+              
               <button 
                 onClick={() => dispatch(removeItem(item.id))}
-                className="px-5 py-3 bg-red-100 hover:bg-red-200 text-red-700 rounded-lg text-xl font-semibold "
+                className="remove px-5 py-3 bg-red-100 hover:bg-red-200 text-red-700 rounded-lg text-xl font-semibold "
               >
                 Ta bort
               </button>

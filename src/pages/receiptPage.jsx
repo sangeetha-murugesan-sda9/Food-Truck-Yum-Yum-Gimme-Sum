@@ -66,17 +66,17 @@ const ReceiptPage = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
+    <div className=" receipt-page max-w-4xl mx-auto p-4">
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold">Yum Yum Gimme Sum</h1>
-        <p className="text-gray-600">Food Truck Receipt</p>
+        <p className="text-gray-600">matvagn Kvitto</p>
       </div>
 
       <div className="bg-white shadow-lg rounded-lg overflow-hidden">
         <div className="p-6 border-b">
           <div className="flex justify-between mb-4">
             <div>
-              <h2 className="text-xl font-bold">Receipt #{orderId}</h2>
+              <h2 className="text-xl font-bold">KVITTO #{orderId}</h2>
               <p className="text-gray-600">
                 {new Date(timestamp).toLocaleDateString()}
               </p>
@@ -85,7 +85,7 @@ const ReceiptPage = () => {
               </p>
             </div>
             <div className="text-right">
-              <p className="font-semibold">Order Status: Completed</p>
+              <p className="font-semibold">Orderstatus: Slutförd</p>
             </div>
           </div>
         </div>
@@ -93,18 +93,18 @@ const ReceiptPage = () => {
         {/* Order Items Table */}
         <div className="p-6">
           <div className="mb-6">
-            <h3 className="text-lg font-semibold mb-4">Order Summary</h3>
+            <h3 className="text-lg font-semibold mb-4">Ordersammanfattning</h3>
             {items.length === 0 ? (
               <div className="text-center py-6 bg-yellow-50 rounded-lg">
-                <p className="text-yellow-700">No items found in this order</p>
-                <p className="text-sm mt-2">This might be due to a temporary API issue</p>
+                <p className="text-yellow-700">Inga varor hittades i den här beställningen</p>
+                <p className="text-sm mt-2">Detta kan bero på ett tillfälligt API-problem</p>
               </div>
             ) : (
               <div className="border rounded-lg overflow-hidden">
                 <div className="grid grid-cols-12 bg-gray-100 p-3 font-semibold">
                   <div className="col-span-1">#</div>
                   <div className="col-span-5">Item</div>
-                  <div className="col-span-2 text-center">Unit Price</div> 
+                  <div className="col-span-2 text-center">Enhetspris</div> 
                   <div className="col-span-2 text-center">Qty</div>
                   <div className="col-span-2 text-right">Total</div>
                 </div>
@@ -139,15 +139,15 @@ const ReceiptPage = () => {
           <div className="flex justify-end">
             <div className="w-full md:w-1/3">
               <div className="flex justify-between py-2">
-                <span className="font-semibold">Subtotal:</span>
+                <span className="font-semibold">Delsumma:</span>
                 <span>${total.toFixed(2)}</span>
               </div>
               <div className="flex justify-between py-2 border-t">
-                <span className="font-semibold">Tax (0%):</span>
+                <span className="font-semibold">Skattebelopp (0%):</span>
                 <span>$0.00</span>
               </div>
               <div className="flex justify-between py-2 border-t border-b">
-                <span className="font-semibold">Discount:</span>
+                <span className="font-semibold">Rabatt:</span>
                 <span>$0.00</span>
               </div>
               <div className="flex justify-between py-2 font-bold text-lg">
@@ -159,12 +159,12 @@ const ReceiptPage = () => {
         </div>
 
         <div className="p-6 bg-gray-50 text-center">
-          <p className="mb-4">Thank you for your order at Yum Yum Gimme Sum!</p>
+          <p className="mb-4">Tack för din beställning på Yum Yum Gimme Sum!</p>
           <Link 
             to="/" 
             className="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded"
           >
-            Back to Menu
+           <button>GÖR EN NY BESTÄLLNING</button> 
           </Link>
         </div>
       </div>

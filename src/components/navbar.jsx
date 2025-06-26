@@ -9,13 +9,11 @@ const Navbar = () => {
   return (
     <nav className="bg-yellow-500 p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 yum>
-          Yum Yum Gimme Sum 
+        
           <Link to="/" className=" MenuText text-white hover:text-gray-200">
-          <button>Meny</button>
-            
+          MENY 
           </Link>
-        </h1>
+        
         <div className="flex space-x-4">
           
           <Link to="/cart" className=" cartLink text-white hover:text-gray-200 relative">
