@@ -1,5 +1,5 @@
-
-A React-based frontend application for the Yum Yum Gimme Sum food truck that serves delicious wontons. This app allows customers to browse the menu, manage their cart, place orders, and view receipts.
+# Yum Yum Gimme Sum - Food Truck Menu System  
+A React-based frontend application for the Yum Yum Gimme Sum food truck that serves delicious wontons. This app allows customers to browse the menu, manage their cart, place orders, and view receipts.*A vibrant digital menu for modern food trucks*
 
 # Features
 1.Browse the full menu of wontons, dips, and drinks
