@@ -108,9 +108,9 @@ npm start
 or
 yarn start
 
-Open http://localhost:3000 in your browser.
+Open http://localhost:3000 in your browser
 or
-Install Vite latest version.
+Install Vite latest version and
 Open http://localhost:5173 in your browser.
 
 # Available Scripts
