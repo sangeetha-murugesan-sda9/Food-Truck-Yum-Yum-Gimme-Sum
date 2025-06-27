@@ -30,6 +30,8 @@ A React-based frontend application for the Yum Yum Gimme Sum food truck that ser
 
 6.Fetch API
 
+7.React Vite
+
 # Folder Structure
 
 src/
@@ -105,7 +107,9 @@ bash
 npm start
 or
 yarn start
-Open http://localhost:3000 in your browser.
+
+Install Vite latest version.
+Open http://localhost:5173 in your browser.
 
 # Available Scripts
 npm start: Runs the app in development mode
