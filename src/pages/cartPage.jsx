@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { removeItem, updateQuantity, clearCart } from '../features/cart/cartSlice';
 import { placeOrder } from '../features/order/orderSlice';
+import '../styles/cart.css';
 
 const CartPage = () => {
   const dispatch = useDispatch();

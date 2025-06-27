@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchReceipt } from '../features/order/orderSlice';
+import '../styles/receipt.css';
 
 const ReceiptPage = () => {
   const { id } = useParams();

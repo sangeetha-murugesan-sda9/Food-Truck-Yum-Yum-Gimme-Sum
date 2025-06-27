@@ -51,14 +51,12 @@ function Home() {
         
       </header>
 
-      {/* Main content */}
       <main className="container mx-auto px-4 pt-24 pb-6 justigy-center">
-        {/* Page title */}
+
         <div className="text-center mb-8 title">
           <h1 className="text-5xl font-bold text-white font-outline tracking-tight">MENY</h1>
         </div>
         
-        {/* Loading and error states */}
         {tenantStatus === 'loading' || status === 'loading' ? (
           <div className="text-center py-12 text-white bg-gray-800 bg-opacity-70 rounded-xl p-8 max-w-md mx-auto">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
@@ -91,7 +89,7 @@ function Home() {
 
         )}
       </main>
-      
+
       <footer className="py-6 text-center text-white text-opacity-80 text-sm">
         <p>© {new Date().getFullYear()} Yum Yum Gimme Sum</p>
       </footer>

@@ -1,0 +1,52 @@
+.cart-page{
+  background-color:gainsboro;
+  color: black;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.cart-text{
+  color: black;
+  background-color:gainsboro;
+  text-align: center;
+   font-weight: 500; 
+  letter-spacing: 0.5px; 
+  text-transform: uppercase; 
+  font-size: 2rem; 
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+}
+
+.minus-button {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background-color:#8b8c89;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  height: 4vh;
+  width: 4vh;
+  font-size: 1.3vh;
+}
+
+.plus-button {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background-color:#8b8c89;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  height: 4vh;
+  width: 4vh;
+  font-size: 1.3vh;
+}
+
+.remove{
+   font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background-color:#8b8c89;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  height: 4vh;
+  width: 12vh;
+  font-size: 1.3vh;
+  margin-left: 5%;
+}
+
